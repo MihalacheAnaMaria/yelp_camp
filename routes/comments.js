@@ -76,7 +76,4 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
     });
   });
 
- 
-
-
   module.exports = router;
