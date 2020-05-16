@@ -39,9 +39,9 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
   });
 
   router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
-    Comment.findById(req.params.id, function(err, foundCampground){
-      if(err || !foundCampground){
-        req.flash("error", "Campground not found !");
+    Comment.findById(req.params.comment_id, function(err, foundComment){
+      if(err || !foundComment){
+        req.flash("error", "Comment not found !");
         return res.redirect("back");
       }
       Comment.findById(req.params.comment_id, function(err, foundComment){
@@ -67,6 +67,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
   router.delete("/:comment_id", middleware.checkCommentOwnership,  function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err){
       if(err){
+        req.flash("error", "Something went wrong!");
         res.redirect("back");
       } else {
         req.flash("success", "Successfully deleted comment!");
