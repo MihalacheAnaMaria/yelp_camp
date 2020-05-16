@@ -36,9 +36,7 @@ passport.deserializeUser(User.deserializeUser());
 //Set up default mongoose connection
 // var mongoDB = 'mongodb://127.0.0.1/yelp_camp';
 
-var mongoDB = 'mongodb+srv://Ana:kxBs7%40na6Th5%21KP@yelpcamp-ovbbm.mongodb.net/test?retryWrites=true&w=majority';
-
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://Ana:kxBs7%40na6Th5%21KP@yelpcamp-ovbbm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Get the default connection
 var db = mongoose.connection;
